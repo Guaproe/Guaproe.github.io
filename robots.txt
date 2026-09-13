@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://serrurerie-premium-artisan.happy-bloom-7365.chatgpt.site/sitemap.xml
+Sitemap: https://serrurerie-premium-artisan.daviddefreitas0192.chatgpt.site/sitemap.xml
