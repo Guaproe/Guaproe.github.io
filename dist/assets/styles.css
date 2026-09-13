@@ -248,8 +248,12 @@ h1, h2, h3 { line-height: 1.08; color: var(--navy); margin: 0; letter-spacing: 0
   line-height: .96;
   margin: 0 0 30px;
   max-width: none;
-  white-space: nowrap;
   overflow-wrap: normal;
+}
+
+.hero h1 span {
+  display: block;
+  white-space: nowrap;
 }
 
 .hero p {
@@ -964,7 +968,7 @@ textarea { min-height: 120px; resize: vertical; }
       url("hero-locksmith.png") right center / cover no-repeat;
   }
   .hero .container { padding: 44px 0 48px; }
-  .hero h1 { font-size: 1.62rem; margin-bottom: 24px; overflow-wrap: normal; }
+  .hero h1 { font-size: 2.8rem; margin-bottom: 24px; overflow-wrap: normal; }
   .hero p { font-size: 1rem; }
   .hero-list { gap: 14px; }
   .hero-list li { align-items: flex-start; gap: 14px; font-size: 1.12rem; }
