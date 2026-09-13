@@ -30,6 +30,7 @@ const lightbox = document.querySelector("[data-lightbox]");
 const lightboxTitle = document.querySelector("[data-lightbox-title]");
 const lightboxMeta = document.querySelector("[data-lightbox-meta]");
 const lightboxText = document.querySelector("[data-lightbox-text]");
+const lightboxImage = document.querySelector("[data-lightbox-image]");
 const lightboxClose = document.querySelector("[data-lightbox-close]");
 
 workItems.forEach((item) => {
@@ -38,6 +39,10 @@ workItems.forEach((item) => {
     lightboxTitle.textContent = item.dataset.title || "Réalisation";
     lightboxMeta.textContent = item.dataset.city || "";
     lightboxText.textContent = item.dataset.description || "";
+    if (lightboxImage && item.dataset.image) {
+      lightboxImage.src = item.dataset.image;
+      lightboxImage.alt = item.dataset.title || "Photo de réalisation";
+    }
     lightbox.classList.add("open");
     lightboxClose?.focus();
   });
