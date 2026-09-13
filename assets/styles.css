@@ -57,7 +57,7 @@ button, input, select, textarea { font: inherit; }
 }
 
 .header-inner {
-  min-height: 86px;
+  min-height: 78px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -74,8 +74,8 @@ button, input, select, textarea { font: inherit; }
 }
 
 .brand-mark {
-  width: 150px;
-  height: 98px;
+  width: 112px;
+  height: 72px;
   border-radius: 0;
   background: transparent;
   border: 0;
@@ -729,7 +729,7 @@ textarea { min-height: 120px; resize: vertical; }
 @media (max-width: 1220px) {
   .main-nav { gap: 4px; font-size: .84rem; }
   .main-nav a { padding: 7px 6px; }
-  .brand-mark { width: 150px; height: 100px; }
+  .brand-mark { width: 112px; height: 72px; }
   .header-actions .btn-primary, .header-actions .btn-call { padding-inline: 12px; }
 }
 
@@ -763,9 +763,9 @@ textarea { min-height: 120px; resize: vertical; }
   body { padding-bottom: 78px; }
   .container { width: min(100% - 28px, 1240px); }
   .top-strip { font-size: .82rem; padding: 7px 12px; }
-  .header-inner { min-height: 88px; gap: 10px; }
+  .header-inner { min-height: 76px; gap: 10px; }
   .brand small { display: none; }
-  .brand-mark { width: 132px; height: 88px; }
+  .brand-mark { width: 104px; height: 66px; }
   .header-actions .btn-primary, .header-actions .btn-call { display: none; }
   .main-nav { inset: 112px 0 auto; }
   .hero { min-height: 620px; }
