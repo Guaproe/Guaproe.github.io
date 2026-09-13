@@ -316,15 +316,6 @@ h1, h2, h3 { line-height: 1.08; color: var(--navy); margin: 0; letter-spacing: 0
 
 .hero-call:hover { background: #dda23a; }
 
-.hero-callback {
-  color: white;
-  font-size: 2rem;
-  font-weight: 900;
-  border-bottom: 2px solid rgba(255, 255, 255, .58);
-  padding: 8px 0 6px;
-  margin-left: 18px;
-}
-
 .trust-row {
   display: flex;
   flex-wrap: wrap;
@@ -946,6 +937,69 @@ section { padding: 58px 0; }
 }
 .local-hero h1 { color: var(--ink); font-size: 4.6rem; }
 .local-hero p { color: #4f4940; max-width: 760px; font-size: 1.12rem; }
+.legal-hero {
+  padding-bottom: 34px;
+}
+.legal-hero .eyebrow {
+  margin-bottom: 14px;
+}
+.legal-page {
+  background: #fbf6ec;
+  padding: 0 0 70px;
+}
+.legal-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 840px);
+}
+.legal-content {
+  background: #fffaf2;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 34px;
+}
+.legal-content section + section {
+  margin-top: 34px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.legal-content h2 {
+  color: var(--navy);
+  font-size: 1.45rem;
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+.legal-content p,
+.legal-content li,
+.legal-content address {
+  color: #4f4940;
+}
+.legal-content p {
+  margin: 0 0 12px;
+}
+.legal-content p:last-child {
+  margin-bottom: 0;
+}
+.legal-content ul {
+  margin: 0 0 14px;
+  padding-left: 22px;
+}
+.legal-content li + li {
+  margin-top: 6px;
+}
+.legal-content address {
+  font-style: normal;
+  background: #fbf6ec;
+  border-left: 4px solid var(--warm);
+  padding: 14px 16px;
+  margin: 12px 0;
+}
+.legal-content a {
+  color: var(--navy);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
 .conversion-grid h2 + p,
 .conversion-grid p + h2 {
   margin-top: 22px;
@@ -984,7 +1038,7 @@ section { padding: 58px 0; }
   .gallery-grid[data-carousel] .work-item { flex-basis: calc((100% - 18px) / 2); }
   .hero h1 { font-size: 4.2rem; }
   .hero-list li { font-size: 1.45rem; }
-  .hero-call, .hero-callback { font-size: 1.55rem; }
+  .hero-call { font-size: 1.55rem; }
   .section-head h2 { font-size: 2.65rem; }
   .local-hero h1 { font-size: 3.9rem; }
 }
@@ -1020,7 +1074,6 @@ section { padding: 58px 0; }
   .hero-ctas .btn { width: 100%; }
   .hero-call { min-height: 58px; padding: 14px 24px; font-size: 1.3rem; }
   .hero-call::before { font-size: 1.2rem; }
-  .hero-callback { width: max-content; margin-left: 0; font-size: 1.35rem; }
   section { padding: 54px 0; }
   .section-head { display: block; }
   .section-head h2 { font-size: 2.05rem; }
@@ -1032,6 +1085,9 @@ section { padding: 58px 0; }
   }
   .urgent-panel h2 { font-size: 1.55rem; }
   .local-hero h1 { font-size: 2.65rem; }
+  .legal-content { padding: 24px 20px; }
+  .legal-content h2 { font-size: 1.22rem; }
+  .legal-content address { padding: 12px 14px; }
   .urgent { margin-top: 0; padding: 38px 0; }
   .urgent + section { padding-top: 48px; }
   .urgent-panel { padding: 18px; gap: 18px; }
