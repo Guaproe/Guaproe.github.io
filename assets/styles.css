@@ -946,6 +946,37 @@ textarea { min-height: 120px; resize: vertical; }
   .steps, .service-grid, .benefit-grid, .pricing-grid, .process, .gallery-grid, .city-grid, .footer-grid, .form-row, .brand-strip {
     grid-template-columns: 1fr;
   }
+  .benefit-grid {
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .benefit-grid .card {
+    min-height: 0;
+    padding: 10px 2px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .benefit-grid .card + .card {
+    border-top: 1px solid var(--line);
+  }
+  .benefit-grid .icon {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    border-radius: 999px;
+    font-size: .9rem;
+  }
+  .benefit-grid strong {
+    margin-top: 0;
+    font-size: .98rem;
+    line-height: 1.25;
+  }
   .gallery-grid[data-carousel] .work-item {
     flex: 0 0 88%;
     scroll-snap-align: start;
