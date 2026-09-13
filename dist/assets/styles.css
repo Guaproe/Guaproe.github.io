@@ -791,16 +791,6 @@ section { padding: 58px 0; }
   color: #f8f3ea;
   padding: 40px 0 86px;
 }
-.site-footer .brand {
-  color: #fff;
-  display: inline-flex;
-  margin-bottom: 14px;
-}
-.site-footer .brand-mark {
-  width: 154px;
-  height: 112px;
-  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, .22));
-}
 .footer-grid {
   display: grid;
   grid-template-columns: minmax(230px, 1.25fr) repeat(3, minmax(150px, 1fr));
@@ -1055,10 +1045,6 @@ section { padding: 58px 0; }
   }
   .site-footer {
     padding-top: 34px;
-  }
-  .site-footer .brand-mark {
-    width: 132px;
-    height: 96px;
   }
   .footer-grid {
     gap: 22px;
