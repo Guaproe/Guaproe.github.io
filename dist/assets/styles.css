@@ -824,6 +824,30 @@ textarea { min-height: 120px; resize: vertical; }
   font-size: 1.4rem;
 }
 
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.35);
+  background: rgba(22, 38, 63, .88);
+  color: #fff7df;
+  font-size: 2.2rem;
+  line-height: 1;
+  font-weight: 800;
+  cursor: pointer;
+  transform: translateY(-50%);
+  box-shadow: 0 18px 34px rgba(0,0,0,.24);
+}
+
+.lightbox-arrow:hover {
+  background: #223b63;
+}
+
+.lightbox-arrow-prev { left: max(18px, calc((100vw - 1020px) / 2)); }
+.lightbox-arrow-next { right: max(18px, calc((100vw - 1020px) / 2)); }
+
 .local-hero {
   background: #fbf6ec;
   color: var(--ink);
@@ -950,5 +974,16 @@ textarea { min-height: 120px; resize: vertical; }
     white-space: normal;
   }
   .work-item { min-height: 260px; }
+  .lightbox { padding: 16px 14px 92px; }
+  .lightbox-panel { width: 100%; }
+  .lightbox-arrow {
+    top: auto;
+    bottom: 24px;
+    width: 48px;
+    height: 48px;
+    transform: none;
+  }
+  .lightbox-arrow-prev { left: calc(50% - 58px); }
+  .lightbox-arrow-next { right: calc(50% - 58px); }
   .mobile-cta { display: grid; }
 }

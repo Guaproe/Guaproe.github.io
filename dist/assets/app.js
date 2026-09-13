@@ -84,29 +84,56 @@ const lightboxMeta = document.querySelector("[data-lightbox-meta]");
 const lightboxText = document.querySelector("[data-lightbox-text]");
 const lightboxImage = document.querySelector("[data-lightbox-image]");
 const lightboxClose = document.querySelector("[data-lightbox-close]");
+const lightboxPrevious = document.querySelector("[data-lightbox-prev]");
+const lightboxNext = document.querySelector("[data-lightbox-next]");
+let activeLightboxItem = null;
+
+const setLightboxContent = (item) => {
+  if (!item || !lightbox) return;
+  activeLightboxItem = item;
+  lightboxTitle.textContent = item.dataset.title || "Réalisation";
+  lightboxMeta.textContent = item.dataset.city || "";
+  lightboxText.textContent = item.dataset.description || "";
+  if (lightboxImage && item.dataset.image) {
+    lightboxImage.src = item.dataset.image;
+    lightboxImage.alt = item.dataset.title || "Photo de réalisation";
+  }
+};
+
+const navigateLightbox = (direction) => {
+  if (!activeLightboxItem) return;
+  const carousel = activeLightboxItem.closest("[data-carousel]");
+  const items = carousel ? getVisibleSlides(carousel) : Array.from(workItems).filter((item) => !item.hidden);
+  if (!items.length) return;
+  const currentIndex = Math.max(0, items.indexOf(activeLightboxItem));
+  const nextIndex = (currentIndex + direction + items.length) % items.length;
+  setLightboxContent(items[nextIndex]);
+};
 
 workItems.forEach((item) => {
   item.addEventListener("click", () => {
     if (!lightbox) return;
-    lightboxTitle.textContent = item.dataset.title || "Réalisation";
-    lightboxMeta.textContent = item.dataset.city || "";
-    lightboxText.textContent = item.dataset.description || "";
-    if (lightboxImage && item.dataset.image) {
-      lightboxImage.src = item.dataset.image;
-      lightboxImage.alt = item.dataset.title || "Photo de réalisation";
-    }
+    setLightboxContent(item);
     lightbox.classList.add("open");
     lightboxClose?.focus();
   });
 });
 
-const closeLightbox = () => lightbox?.classList.remove("open");
+const closeLightbox = () => {
+  lightbox?.classList.remove("open");
+  activeLightboxItem = null;
+};
 lightboxClose?.addEventListener("click", closeLightbox);
+lightboxPrevious?.addEventListener("click", () => navigateLightbox(-1));
+lightboxNext?.addEventListener("click", () => navigateLightbox(1));
 lightbox?.addEventListener("click", (event) => {
   if (event.target === lightbox) closeLightbox();
 });
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeLightbox();
+  if (!lightbox?.classList.contains("open")) return;
+  if (event.key === "ArrowLeft") navigateLightbox(-1);
+  if (event.key === "ArrowRight") navigateLightbox(1);
 });
 
 const quoteForm = document.querySelector("[data-quote-form]");
