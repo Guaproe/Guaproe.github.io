@@ -989,6 +989,42 @@ textarea { min-height: 120px; resize: vertical; }
     font-size: .98rem;
     line-height: 1.25;
   }
+  .process {
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .process .card {
+    min-height: 0;
+    padding: 10px 2px;
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    column-gap: 10px;
+    align-items: start;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .process .card + .card {
+    border-top: 1px solid var(--line);
+  }
+  .process .card::before {
+    margin: 2px 0 0;
+    font-size: .9rem;
+    line-height: 1.2;
+  }
+  .process .card h3 {
+    margin: 0 0 3px;
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+  .process .card p {
+    grid-column: 2;
+    margin: 0;
+    font-size: .95rem;
+    line-height: 1.35;
+  }
   .gallery-grid[data-carousel] .work-item {
     flex: 0 0 88%;
     scroll-snap-align: start;
