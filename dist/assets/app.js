@@ -80,6 +80,45 @@ carousels.forEach((carousel) => {
   }
 });
 
+document.querySelectorAll("[data-review-carousel]").forEach((carousel) => {
+  const track = carousel.querySelector("[data-review-track]");
+  const slides = Array.from(carousel.querySelectorAll("[data-review-slide]"));
+  const controls = carousel.querySelector("[data-review-controls]");
+  const previousButton = carousel.querySelector("[data-review-prev]");
+  const nextButton = carousel.querySelector("[data-review-next]");
+  const count = carousel.querySelector("[data-review-count]");
+  let activeIndex = 0;
+
+  if (!track || slides.length <= 1) {
+    if (controls) controls.hidden = true;
+    return;
+  }
+
+  const updateCount = () => {
+    if (count) count.textContent = `${activeIndex + 1} / ${slides.length}`;
+  };
+
+  const showReview = (index) => {
+    activeIndex = (index + slides.length) % slides.length;
+    slides[activeIndex].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+    updateCount();
+  };
+
+  previousButton?.addEventListener("click", () => showReview(activeIndex - 1));
+  nextButton?.addEventListener("click", () => showReview(activeIndex + 1));
+  track.addEventListener("scroll", () => {
+    const trackLeft = track.getBoundingClientRect().left;
+    const closest = slides.reduce((best, slide, index) => {
+      const distance = Math.abs(slide.getBoundingClientRect().left - trackLeft);
+      return distance < best.distance ? { index, distance } : best;
+    }, { index: activeIndex, distance: Infinity });
+    activeIndex = closest.index;
+    updateCount();
+  }, { passive: true });
+
+  updateCount();
+});
+
 const lightbox = document.querySelector("[data-lightbox]");
 const lightboxTitle = document.querySelector("[data-lightbox-title]");
 const lightboxMeta = document.querySelector("[data-lightbox-meta]");
