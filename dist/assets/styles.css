@@ -456,13 +456,12 @@ section { padding: 58px 0; }
 .benefit-grid { grid-template-columns: repeat(5, 1fr); }
 .pricing-grid { grid-template-columns: repeat(3, 1fr); }
 .city-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
   margin-top: 22px;
-  padding: 18px 0;
-  border-top: 1px solid rgba(22, 38, 63, .16);
-  border-bottom: 1px solid rgba(22, 38, 63, .16);
+  padding: 0;
+  list-style: none;
 }
 
 .card {
@@ -714,36 +713,54 @@ section { padding: 58px 0; }
   font-weight: 850;
   text-align: center;
 }
+.city-grid li {
+  min-width: 0;
+}
 .city-grid a {
-  position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 9px;
-  min-height: 42px;
-  padding: 8px 22px 8px 0;
-  margin-right: 22px;
+  gap: 11px;
+  width: 100%;
+  min-height: 54px;
+  padding: 13px 15px;
+  border: 1px solid rgba(22, 38, 63, .12);
+  border-radius: 12px;
+  background: rgba(255, 250, 242, .82);
   color: var(--navy);
   font-weight: 850;
+  line-height: 1.18;
+  box-shadow: 0 10px 22px rgba(22, 38, 63, .045);
+  transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
 }
 .city-grid a::before {
   content: "";
+  flex: 0 0 7px;
   width: 7px;
   height: 7px;
   border-radius: 999px;
   background: var(--warm);
   box-shadow: 0 0 0 4px rgba(209, 143, 39, .14);
 }
-.city-grid a::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 12px;
-  bottom: 12px;
-  width: 1px;
-  background: rgba(22, 38, 63, .18);
+.city-grid a span {
+  min-width: 0;
 }
-.city-grid a:last-child::after { display: none; }
-.city-grid a:hover { color: #8d5d07; }
+.city-grid small {
+  margin-left: auto;
+  white-space: nowrap;
+  color: #8d5d07;
+  font-size: .76rem;
+  font-weight: 900;
+}
+.city-grid .city-main a {
+  border-color: rgba(209, 143, 39, .42);
+  background: linear-gradient(180deg, #fffaf2, #fff4dc);
+  box-shadow: 0 14px 28px rgba(209, 143, 39, .12);
+}
+.city-grid a:hover {
+  border-color: rgba(209, 143, 39, .42);
+  box-shadow: 0 14px 28px rgba(22, 38, 63, .08);
+  transform: translateY(-1px);
+}
 
 .faq {
   display: grid;
@@ -968,7 +985,7 @@ textarea { min-height: 120px; resize: vertical; }
       url("hero-locksmith.png") right center / cover no-repeat;
   }
   .hero .container { padding: 44px 0 48px; }
-  .hero h1 { font-size: 2.8rem; margin-bottom: 24px; overflow-wrap: normal; }
+  .hero h1 { font-size: 2.12rem; margin-bottom: 24px; overflow-wrap: normal; }
   .hero p { font-size: 1rem; }
   .hero-list { gap: 14px; }
   .hero-list li { align-items: flex-start; gap: 14px; font-size: 1.12rem; }
