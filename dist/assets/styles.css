@@ -955,6 +955,7 @@ textarea { min-height: 120px; resize: vertical; }
   .urgent-action { grid-column: 1; }
   .benefit-grid { grid-template-columns: repeat(3, 1fr); }
   .service-grid, .pricing-grid, .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .city-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .gallery-grid[data-carousel] .work-item { flex-basis: calc((100% - 18px) / 2); }
   .hero h1 { font-size: 4.2rem; }
   .hero-list li { font-size: 1.45rem; }
@@ -1014,8 +1015,24 @@ textarea { min-height: 120px; resize: vertical; }
     gap: 12px;
   }
   .urgent-action .btn { width: 100%; }
-  .steps, .service-grid, .benefit-grid, .pricing-grid, .process, .gallery-grid, .city-grid, .footer-grid, .form-row, .brand-strip {
+  .steps, .service-grid, .benefit-grid, .pricing-grid, .process, .gallery-grid, .footer-grid, .form-row, .brand-strip {
     grid-template-columns: 1fr;
+  }
+  .city-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .city-grid .city-main {
+    grid-column: 1 / -1;
+  }
+  .city-grid a {
+    min-height: 48px;
+    padding: 11px 12px;
+    gap: 9px;
+    font-size: clamp(.88rem, 3.45vw, .98rem);
+  }
+  .city-grid small {
+    font-size: .72rem;
   }
   .benefit-grid {
     gap: 0;
@@ -1127,4 +1144,8 @@ textarea { min-height: 120px; resize: vertical; }
   .lightbox-arrow-prev { left: calc(50% - 58px); }
   .lightbox-arrow-next { right: calc(50% - 58px); }
   .mobile-cta { display: grid; }
+}
+
+@media (max-width: 360px) {
+  .city-grid { grid-template-columns: 1fr; }
 }
