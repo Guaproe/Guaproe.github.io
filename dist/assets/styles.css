@@ -49,9 +49,10 @@ button, input, select, textarea { font: inherit; }
   position: sticky;
   top: 0;
   z-index: 30;
-  background: rgba(255, 255, 255, .94);
+  background: linear-gradient(180deg, rgba(16, 24, 39, .98), rgba(20, 31, 52, .96));
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+  box-shadow: 0 12px 28px rgba(16, 24, 39, .16);
   overflow-x: clip;
 }
 
@@ -68,7 +69,7 @@ button, input, select, textarea { font: inherit; }
   align-items: center;
   gap: 10px;
   font-weight: 850;
-  color: var(--navy);
+  color: white;
   letter-spacing: 0;
 }
 
@@ -78,7 +79,7 @@ button, input, select, textarea { font: inherit; }
   border-radius: 0;
   background: transparent;
   border: 0;
-  filter: drop-shadow(0 10px 18px rgba(16, 24, 39, .16));
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, .34));
   color: var(--navy);
   display: grid;
   place-items: center;
@@ -106,7 +107,7 @@ button, input, select, textarea { font: inherit; }
   gap: 8px;
   font-size: .9rem;
   font-weight: 760;
-  color: #344054;
+  color: rgba(255, 255, 255, .84);
   min-width: 0;
 }
 
@@ -116,8 +117,8 @@ button, input, select, textarea { font: inherit; }
   padding: 8px 9px;
 }
 .main-nav a:hover {
-  color: var(--navy);
-  background: #f3f5f8;
+  color: white;
+  background: rgba(255, 255, 255, .1);
 }
 
 .header-actions {
@@ -153,8 +154,8 @@ button, input, select, textarea { font: inherit; }
   display: none;
   width: 44px;
   height: 44px;
-  border: 1px solid var(--line);
-  background: white;
+  border: 1px solid rgba(255, 255, 255, .22);
+  background: rgba(255, 255, 255, .08);
   border-radius: var(--radius);
   align-items: center;
   justify-content: center;
@@ -166,7 +167,7 @@ button, input, select, textarea { font: inherit; }
   display: block;
   width: 20px;
   height: 2px;
-  background: var(--navy);
+  background: white;
   content: "";
   position: relative;
 }
@@ -654,8 +655,8 @@ textarea { min-height: 120px; resize: vertical; }
     flex-direction: column;
     align-items: stretch;
     padding: 20px;
-    background: white;
-    border-bottom: 1px solid var(--line);
+    background: #101827;
+    border-bottom: 1px solid rgba(255, 255, 255, .12);
     box-shadow: var(--shadow);
   }
   body.nav-open .main-nav { display: flex; }
