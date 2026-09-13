@@ -199,7 +199,9 @@ button, input, select, textarea { font: inherit; }
   inset: 0;
   background:
     linear-gradient(120deg, rgba(255, 255, 255, .035) 1px, transparent 1px) 0 0 / 190px 190px,
-    linear-gradient(60deg, rgba(255, 255, 255, .03) 1px, transparent 1px) 0 0 / 190px 190px;
+    linear-gradient(60deg, rgba(255, 255, 255, .03) 1px, transparent 1px) 0 0 / 190px 190px,
+    linear-gradient(90deg, rgba(22, 38, 63, .96) 0%, rgba(22, 38, 63, .92) 46%, rgba(22, 38, 63, .78) 72%, rgba(22, 38, 63, .64) 100%),
+    url("hero-locksmith.png") center right / cover no-repeat;
 }
 
 .hero .container {
@@ -834,7 +836,9 @@ textarea { min-height: 120px; resize: vertical; }
     content: "";
     background:
       linear-gradient(120deg, rgba(255, 255, 255, .035) 1px, transparent 1px) 0 0 / 130px 130px,
-      linear-gradient(60deg, rgba(255, 255, 255, .03) 1px, transparent 1px) 0 0 / 130px 130px;
+      linear-gradient(60deg, rgba(255, 255, 255, .03) 1px, transparent 1px) 0 0 / 130px 130px,
+      linear-gradient(180deg, rgba(22, 38, 63, .94) 0%, rgba(22, 38, 63, .88) 52%, rgba(22, 38, 63, .78) 100%),
+      url("hero-locksmith.png") right center / cover no-repeat;
   }
   .hero .container { padding: 44px 0 48px; }
   .hero h1 { font-size: 3.35rem; margin-bottom: 24px; overflow-wrap: anywhere; }
