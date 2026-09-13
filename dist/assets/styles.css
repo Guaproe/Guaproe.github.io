@@ -588,22 +588,7 @@ section { padding: 58px 0; }
 }
 
 .gallery-grid[data-carousel] {
-  display: flex;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  padding: 2px 2px 8px;
-}
-
-.gallery-grid[data-carousel]::-webkit-scrollbar {
-  display: none;
-}
-
-.gallery-grid[data-carousel] .work-item {
-  flex: 0 0 calc((100% - 36px) / 3);
-  scroll-snap-align: start;
+  display: grid;
 }
 
 .work-item {
@@ -884,7 +869,6 @@ textarea { min-height: 120px; resize: vertical; }
   .urgent-action { grid-column: 1; }
   .benefit-grid { grid-template-columns: repeat(3, 1fr); }
   .service-grid, .pricing-grid, .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-grid[data-carousel] .work-item { flex-basis: calc((100% - 18px) / 2); }
   .hero h1 { font-size: 5rem; }
   .hero-list li { font-size: 1.45rem; }
   .hero-call, .hero-callback { font-size: 1.55rem; }
@@ -946,7 +930,22 @@ textarea { min-height: 120px; resize: vertical; }
   .steps, .service-grid, .benefit-grid, .pricing-grid, .process, .gallery-grid, .city-grid, .footer-grid, .form-row, .brand-strip {
     grid-template-columns: 1fr;
   }
-  .gallery-grid[data-carousel] .work-item { flex-basis: 88%; }
+  .gallery-grid[data-carousel] {
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 2px 2px 8px;
+  }
+  .gallery-grid[data-carousel]::-webkit-scrollbar {
+    display: none;
+  }
+  .gallery-grid[data-carousel] .work-item {
+    flex: 0 0 88%;
+    scroll-snap-align: start;
+  }
   .price-table-wrap { overflow: hidden; }
   .price-table {
     min-width: 0;
