@@ -137,13 +137,3 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft") navigateLightbox(-1);
   if (event.key === "ArrowRight") navigateLightbox(1);
 });
-
-const quoteForm = document.querySelector("[data-quote-form]");
-const formStatus = document.querySelector("[data-form-status]");
-quoteForm?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  if (formStatus) {
-    formStatus.textContent = "Merci, votre demande est prête. Remplacez ce formulaire par votre outil d’envoi ou votre CRM pour recevoir les messages.";
-  }
-  quoteForm.reset();
-});
