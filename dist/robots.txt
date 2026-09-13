@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://serrurerie-premium-artisan.happy-bloom-7365.chatgpt.site/sitemap.xml
