@@ -823,6 +823,8 @@ textarea { min-height: 120px; resize: vertical; }
 
 @media (max-width: 760px) {
   body { padding-bottom: 78px; }
+  html, body { max-width: 100%; overflow-x: hidden; }
+  img, video, iframe, table { max-width: 100%; }
   .container { width: min(100% - 28px, 1240px); }
   .top-strip { font-size: .82rem; padding: 7px 12px; }
   .header-inner { height: 70px; min-height: 70px; gap: 10px; }
@@ -866,6 +868,32 @@ textarea { min-height: 120px; resize: vertical; }
   .urgent-action .btn { width: 100%; }
   .steps, .service-grid, .benefit-grid, .pricing-grid, .process, .gallery-grid, .city-grid, .footer-grid, .form-row, .brand-strip {
     grid-template-columns: 1fr;
+  }
+  .price-table-wrap { overflow: hidden; }
+  .price-table {
+    min-width: 0;
+    display: block;
+  }
+  .price-table thead { display: none; }
+  .price-table tbody,
+  .price-table tr,
+  .price-table td {
+    display: block;
+    width: 100%;
+  }
+  .price-table tr {
+    padding: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .price-table tr:first-child { border-top: 0; }
+  .price-table td {
+    border-top: 0;
+    padding: 0;
+  }
+  .price-table td:first-child { width: 100%; }
+  .price-table td:last-child {
+    margin-top: 10px;
+    white-space: normal;
   }
   .work-item { min-height: 260px; }
   .mobile-cta { display: grid; }
