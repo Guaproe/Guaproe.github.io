@@ -23,7 +23,37 @@ filterButtons.forEach((button) => {
     workItems.forEach((item) => {
       item.hidden = filter !== "all" && item.dataset.category !== filter;
     });
+    document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+      carousel.scrollTo({ left: 0, behavior: "smooth" });
+    });
   });
+});
+
+const carouselMotionAllowed = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+  if (!carouselMotionAllowed) return;
+
+  let paused = false;
+  const visibleItems = () => Array.from(carousel.querySelectorAll("[data-category]:not([hidden])"));
+  const nextSlide = () => {
+    if (paused || carousel.scrollWidth <= carousel.clientWidth + 4) return;
+    const items = visibleItems();
+    if (!items.length) return;
+
+    const currentLeft = carousel.scrollLeft;
+    const next = items.find((item) => item.offsetLeft > currentLeft + 12);
+    carousel.scrollTo({
+      left: next ? next.offsetLeft - carousel.offsetLeft : 0,
+      behavior: "smooth",
+    });
+  };
+
+  const timer = window.setInterval(nextSlide, 3200);
+  carousel.addEventListener("mouseenter", () => { paused = true; });
+  carousel.addEventListener("mouseleave", () => { paused = false; });
+  carousel.addEventListener("focusin", () => { paused = true; });
+  carousel.addEventListener("focusout", () => { paused = false; });
+  window.addEventListener("pagehide", () => window.clearInterval(timer), { once: true });
 });
 
 const lightbox = document.querySelector("[data-lightbox]");
