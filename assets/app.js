@@ -15,6 +15,27 @@ document.querySelectorAll(".main-nav a").forEach((link) => {
 
 const filterButtons = document.querySelectorAll("[data-filter]");
 const workItems = document.querySelectorAll("[data-category]");
+const carousels = document.querySelectorAll("[data-carousel]");
+
+const getVisibleSlides = (carousel) => Array.from(carousel.querySelectorAll("[data-category]")).filter((item) => !item.hidden);
+
+const goToSlide = (carousel, direction = 1) => {
+  const slides = getVisibleSlides(carousel);
+  if (!slides.length) return;
+
+  const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+  if (maxScroll <= 4) return;
+
+  const styles = window.getComputedStyle(carousel);
+  const gap = Number.parseFloat(styles.columnGap || styles.gap || "0") || 0;
+  const step = slides[0].getBoundingClientRect().width + gap;
+  const target = direction > 0
+    ? (carousel.scrollLeft >= maxScroll - 8 ? 0 : Math.min(carousel.scrollLeft + step, maxScroll))
+    : (carousel.scrollLeft <= 8 ? maxScroll : Math.max(carousel.scrollLeft - step, 0));
+
+  carousel.scrollTo({ left: target, behavior: "smooth" });
+};
+
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const filter = button.dataset.filter;
@@ -23,37 +44,38 @@ filterButtons.forEach((button) => {
     workItems.forEach((item) => {
       item.hidden = filter !== "all" && item.dataset.category !== filter;
     });
-    document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+    carousels.forEach((carousel) => {
       carousel.scrollTo({ left: 0, behavior: "smooth" });
     });
   });
 });
 
 const carouselMotionAllowed = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-document.querySelectorAll("[data-carousel]").forEach((carousel) => {
-  if (!carouselMotionAllowed) return;
-
+carousels.forEach((carousel) => {
   let paused = false;
-  const visibleItems = () => Array.from(carousel.querySelectorAll("[data-category]:not([hidden])"));
-  const nextSlide = () => {
-    if (paused || carousel.scrollWidth <= carousel.clientWidth + 4) return;
-    const items = visibleItems();
-    if (!items.length) return;
+  const controls = carousel.previousElementSibling;
+  const previousButton = controls?.querySelector("[data-carousel-prev]");
+  const nextButton = controls?.querySelector("[data-carousel-next]");
 
-    const currentLeft = carousel.scrollLeft;
-    const next = items.find((item) => item.offsetLeft > currentLeft + 12);
-    carousel.scrollTo({
-      left: next ? next.offsetLeft - carousel.offsetLeft : 0,
-      behavior: "smooth",
-    });
+  const move = (direction) => {
+    paused = true;
+    goToSlide(carousel, direction);
+    window.setTimeout(() => { paused = false; }, 4500);
   };
 
-  const timer = window.setInterval(nextSlide, 3200);
+  previousButton?.addEventListener("click", () => move(-1));
+  nextButton?.addEventListener("click", () => move(1));
   carousel.addEventListener("mouseenter", () => { paused = true; });
   carousel.addEventListener("mouseleave", () => { paused = false; });
   carousel.addEventListener("focusin", () => { paused = true; });
   carousel.addEventListener("focusout", () => { paused = false; });
-  window.addEventListener("pagehide", () => window.clearInterval(timer), { once: true });
+
+  if (carouselMotionAllowed) {
+    const timer = window.setInterval(() => {
+      if (!paused) goToSlide(carousel, 1);
+    }, 2800);
+    window.addEventListener("pagehide", () => window.clearInterval(timer), { once: true });
+  }
 });
 
 const lightbox = document.querySelector("[data-lightbox]");
