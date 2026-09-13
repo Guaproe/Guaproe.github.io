@@ -16,6 +16,7 @@ document.querySelectorAll(".main-nav a").forEach((link) => {
 const filterButtons = document.querySelectorAll("[data-filter]");
 const workItems = document.querySelectorAll("[data-category]");
 const carousels = document.querySelectorAll("[data-carousel]");
+let activeFilter = "all";
 
 const getVisibleSlides = (carousel) => Array.from(carousel.querySelectorAll("[data-category]")).filter((item) => !item.hidden);
 
@@ -39,6 +40,7 @@ const goToSlide = (carousel, direction = 1) => {
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const filter = button.dataset.filter;
+    activeFilter = filter;
     filterButtons.forEach((item) => item.classList.remove("active"));
     button.classList.add("active");
     workItems.forEach((item) => {
@@ -72,7 +74,7 @@ carousels.forEach((carousel) => {
 
   if (carouselMotionAllowed) {
     const timer = window.setInterval(() => {
-      if (!paused) goToSlide(carousel, 1);
+      if (!paused && activeFilter === "all") goToSlide(carousel, 1);
     }, 2800);
     window.addEventListener("pagehide", () => window.clearInterval(timer), { once: true });
   }
