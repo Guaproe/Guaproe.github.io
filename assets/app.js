@@ -100,7 +100,8 @@ document.querySelectorAll("[data-review-carousel]").forEach((carousel) => {
 
   const showReview = (index) => {
     activeIndex = (index + slides.length) % slides.length;
-    slides[activeIndex].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+    const target = slides[activeIndex].offsetLeft - track.offsetLeft;
+    track.scrollTo({ left: target, behavior: "smooth" });
     updateCount();
   };
 
@@ -115,6 +116,13 @@ document.querySelectorAll("[data-review-carousel]").forEach((carousel) => {
     activeIndex = closest.index;
     updateCount();
   }, { passive: true });
+
+  if (carouselMotionAllowed) {
+    const timer = window.setInterval(() => {
+      showReview(activeIndex + 1);
+    }, 3500);
+    window.addEventListener("pagehide", () => window.clearInterval(timer), { once: true });
+  }
 
   updateCount();
 });

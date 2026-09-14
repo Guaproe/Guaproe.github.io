@@ -164,7 +164,6 @@ button, input, select, textarea { font: inherit; }
 .btn-call:hover { background: #223b63; }
 .btn-dark { background: var(--navy); color: white; }
 .btn-ghost { border-color: var(--line); background: rgba(255, 255, 255, .7); color: var(--navy); }
-.btn-whatsapp { background: #e9fbf2; color: #10623f; border-color: #bdebd3; }
 .btn-small { min-height: 38px; padding: 8px 12px; font-size: .9rem; }
 
 .menu-toggle {
@@ -716,6 +715,15 @@ section { padding: 58px 0; }
   box-shadow: var(--shadow-soft);
   padding: 24px;
   scroll-snap-align: start;
+  cursor: pointer;
+  transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.google-review-card:hover,
+.google-review-card:focus-visible {
+  border-color: rgba(209, 143, 39, .42);
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
 }
 
 .review-avatar {
@@ -985,7 +993,7 @@ section { padding: 58px 0; }
   bottom: 0;
   z-index: 40;
   display: none;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 8px;
   padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
   background: rgba(251, 246, 236, .96);
