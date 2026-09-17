@@ -1,18 +1,3 @@
-const menuToggle = document.querySelector("[data-menu-toggle]");
-if (menuToggle) {
-  menuToggle.addEventListener("click", () => {
-    document.body.classList.toggle("nav-open");
-    menuToggle.setAttribute("aria-expanded", String(document.body.classList.contains("nav-open")));
-  });
-}
-
-document.querySelectorAll(".main-nav a").forEach((link) => {
-  link.addEventListener("click", () => {
-    document.body.classList.remove("nav-open");
-    menuToggle?.setAttribute("aria-expanded", "false");
-  });
-});
-
 const filterButtons = document.querySelectorAll("[data-filter]");
 const workItems = document.querySelectorAll("[data-category]");
 const carousels = document.querySelectorAll("[data-carousel]");

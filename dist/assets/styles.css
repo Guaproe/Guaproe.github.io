@@ -27,7 +27,6 @@ body {
   overflow-x: hidden;
 }
 
-body.nav-open { overflow: hidden; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button, input, select, textarea { font: inherit; }
@@ -165,30 +164,6 @@ button, input, select, textarea { font: inherit; }
 .btn-dark { background: var(--navy); color: white; }
 .btn-ghost { border-color: var(--line); background: rgba(255, 255, 255, .7); color: var(--navy); }
 .btn-small { min-height: 38px; padding: 8px 12px; font-size: .9rem; }
-
-.menu-toggle {
-  display: none;
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--line);
-  background: #fffaf2;
-  border-radius: var(--radius);
-  align-items: center;
-  justify-content: center;
-}
-
-.menu-toggle span,
-.menu-toggle span::before,
-.menu-toggle span::after {
-  display: block;
-  width: 20px;
-  height: 2px;
-  background: var(--ink);
-  content: "";
-  position: relative;
-}
-.menu-toggle span::before { position: absolute; top: -7px; }
-.menu-toggle span::after { position: absolute; top: 7px; }
 
 .hero {
   position: relative;
@@ -1161,8 +1136,6 @@ section { padding: 58px 0; }
     border-bottom: 1px solid var(--line);
     box-shadow: var(--shadow);
   }
-  body.nav-open .main-nav { display: flex; }
-  .menu-toggle { display: inline-flex; }
 }
 
 @media (max-width: 1080px) {
@@ -1191,10 +1164,7 @@ section { padding: 58px 0; }
   .brand-mark { width: 86px; height: 54px; }
   .brand-logo { max-height: 54px; }
   .header-actions .btn-primary, .header-actions .btn-call { display: none; }
-  .menu-toggle { display: none !important; }
-  .main-nav,
-  body.nav-open .main-nav { display: none !important; }
-  body.nav-open { overflow: auto; }
+  .main-nav { display: none !important; }
   .hero { min-height: 560px; }
   .hero::before {
     content: "";
