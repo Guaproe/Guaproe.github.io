@@ -1191,7 +1191,10 @@ section { padding: 58px 0; }
   .brand-mark { width: 86px; height: 54px; }
   .brand-logo { max-height: 54px; }
   .header-actions .btn-primary, .header-actions .btn-call { display: none; }
-  .main-nav { inset: 112px 0 auto; }
+  .menu-toggle { display: none !important; }
+  .main-nav,
+  body.nav-open .main-nav { display: none !important; }
+  body.nav-open { overflow: auto; }
   .hero { min-height: 560px; }
   .hero::before {
     content: "";
